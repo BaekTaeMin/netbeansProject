@@ -7,6 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.util.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.security.NoSuchAlgorithmException;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -292,15 +297,33 @@ public class signUpForm extends javax.swing.JFrame {
         SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
         String formatedNow = formatter.format(now);
         
+        
+
+        
         PreparedStatement ps;
-        String query = "insert into `netbeansUser`(`u_id`,`u_pass`,`u_date`) values (?,?,?)";
+        String query = "insert into `netbeansUser`(`u_id`,`u_salt`,`u_pass`,`u_date`) values (?,?,?,?)";
         
         try {
-            ps = DB_MAN.getConnection().prepareStatement(query);
+            // 비밀번호 암호화 (SHA-256)
+            String hex = "";
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+            byte[] bytes = new byte[16];
+            random.nextBytes(bytes);
             
+            // SALT 생성
+            String salt = new String (Base64.getEncoder().encode(bytes));
+            String passwordAndSalt = password + salt;
+            
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            //평문+salt 암호화
+            md.update(passwordAndSalt.getBytes());
+            hex = String.format("%064x", new BigInteger(1, md.digest()));
+            
+            ps = DB_MAN.getConnection().prepareStatement(query);
             ps.setString(1, id);
-            ps.setString(2, password);
-            ps.setString(3, formatedNow);
+            ps.setString(2, salt);
+            ps.setString(3, hex);
+            ps.setString(4, formatedNow);
             
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null,"회원가입 성공");
@@ -314,6 +337,8 @@ public class signUpForm extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(signUpForm.class.getName()).log(Level.SEVERE,null, ex);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
