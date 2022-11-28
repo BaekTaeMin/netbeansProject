@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author ingi
  */
 public class loginForm extends javax.swing.JFrame {
-
+    static String userName = null;
     /**
      * Creates new form loginForm
      */
@@ -246,6 +246,7 @@ public class loginForm extends javax.swing.JFrame {
         
         String query1 = "SELECT * From `netbeansUser` WHERE `u_id` = ? and `u_pass` = ?";
         
+        
         try {
             ps = DB_MAN.getConnection().prepareStatement(query1);
             
@@ -255,13 +256,13 @@ public class loginForm extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null,rs.getString(2)+"님 반갑습니다.");
-                
                 mainForm form = new mainForm();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);
                 form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                form.IDlbl.setText(id);
+                userName = id;
+                form.IDlbl.setText(userName);
                 this.dispose();
             }else {
                 JOptionPane.showMessageDialog(null,"아이디나 비밀번호를 확인해주세요.");
