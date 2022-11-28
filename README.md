@@ -9,13 +9,13 @@
 
 <h3>
 2. 생성한 데이터베이스 사용 및 회원 테이블 생성<br>
-                     SQL> use netbeans;<br>
-                     SQL> create table netbeansUser (
-	u_no int(11) auto_increment primary key,
-    u_id varchar(20) not null,
-	u_pass varchar(20) not null,
-    u_date DATETIME not null
-);
+&nbsp&nbsp&nbsp&nbsp SQL> use netbeans;<br>
+&nbsp&nbsp&nbsp&nbsp SQL> create table netbeansUser (<br>
+&nbsp&nbsp&nbsp&nbsp u_no int(11) auto_increment primary key,<br>
+&nbsp&nbsp&nbsp&nbsp u_id varchar(20) not null,<br>
+&nbsp&nbsp&nbsp&nbsp u_pass varchar(20) not null,<br>
+&nbsp&nbsp&nbsp&nbsp u_date DATETIME not null<br>
+&nbsp&nbsp&nbsp&nbsp );
 </h3>
 <br>
 
