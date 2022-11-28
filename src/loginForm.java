@@ -253,11 +253,13 @@ public class loginForm extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null,rs.getString(2)+"님 반갑습니다.");
+                
                 mainForm form = new mainForm();
                 form.setVisible(true);
                 form.pack();
                 form.setLocationRelativeTo(null);
                 form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                form.IDlbl.setText(id);
                 this.dispose();
             }else {
                 JOptionPane.showMessageDialog(null,"아이디나 비밀번호를 확인해주세요.");
