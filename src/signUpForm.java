@@ -121,6 +121,7 @@ public class signUpForm extends javax.swing.JFrame {
         jButton_Register.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton_Register.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Register.setText("회원가입");
+        jButton_Register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_RegisterActionPerformed(evt);
@@ -131,6 +132,7 @@ public class signUpForm extends javax.swing.JFrame {
         jButtonCancel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonCancel.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCancel.setText("취소");
+        jButtonCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelActionPerformed(evt);
