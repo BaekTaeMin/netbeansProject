@@ -1,6 +1,12 @@
 
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
-
+import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.util.Date;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -33,14 +39,14 @@ public class signUpForm extends javax.swing.JFrame {
         jLabelClose = new javax.swing.JLabel();
         jLabelMin = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        userId = new javax.swing.JLabel();
+        password1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton_Register = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
         jLabelLogin = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        password2 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,13 +103,13 @@ public class signUpForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(34, 49, 63));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel4.setText("userId : ");
+        userId.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        userId.setForeground(new java.awt.Color(236, 240, 241));
+        userId.setText("userId : ");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel5.setText("Password : ");
+        password1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        password1.setForeground(new java.awt.Color(236, 240, 241));
+        password1.setText("Password : ");
 
         jTextField1.setBackground(new java.awt.Color(108, 122, 137));
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -111,18 +117,23 @@ public class signUpForm extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(34, 167, 240));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("회원가입");
-
-        jButton2.setBackground(new java.awt.Color(242, 38, 19));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("취소");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Register.setBackground(new java.awt.Color(34, 167, 240));
+        jButton_Register.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton_Register.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Register.setText("회원가입");
+        jButton_Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_RegisterActionPerformed(evt);
+            }
+        });
+
+        jButtonCancel.setBackground(new java.awt.Color(242, 38, 19));
+        jButtonCancel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonCancel.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCancel.setText("취소");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
             }
         });
 
@@ -137,9 +148,9 @@ public class signUpForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel6.setText("Retype Pass : ");
+        password2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        password2.setForeground(new java.awt.Color(236, 240, 241));
+        password2.setText("Retype Pass : ");
 
         jPasswordField2.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -151,15 +162,15 @@ public class signUpForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(password1)
+                    .addComponent(userId)
+                    .addComponent(password2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,20 +185,20 @@ public class signUpForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
+                    .addComponent(userId)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(password1)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(password2)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelLogin)
                 .addContainerGap(62, Short.MAX_VALUE))
@@ -222,9 +233,11 @@ public class signUpForm extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabelMinMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        jTextField1.setText(null);
+        jPasswordField1.setText(null);
+        jPasswordField2.setText(null);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jLabelLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLoginMouseClicked
         loginForm logForm = new loginForm();
@@ -234,6 +247,73 @@ public class signUpForm extends javax.swing.JFrame {
         logForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jLabelLoginMouseClicked
+
+    private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
+        String id = jTextField1.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
+        String password2 = String.valueOf(jPasswordField2.getPassword());
+        String trimspace = "";
+        if (id.equals("") || id.trim().equals(trimspace)) {
+            JOptionPane.showMessageDialog(null,"아이디를 입력해주세요");
+            return;
+        } else if (password.equals("") || password.trim().equals(trimspace)) {
+            JOptionPane.showMessageDialog(null,"비밀번호를 입력해주세요");
+            return;
+        }  else if (password2.equals("") || password2.trim().equals(trimspace)) {
+            JOptionPane.showMessageDialog(null,"비밀번호 확인을 입력해주세요");
+            return;
+        } else if (!password.equals(password2)) {
+            JOptionPane.showMessageDialog(null,"비밀번호가 일치하지 않습니다.");
+            return;
+        }
+        
+        PreparedStatement ps1;
+        ResultSet rs;
+        
+        String query1 = "SELECT * From `netbeansUser` WHERE `u_id` = ?";
+        
+        try {
+            ps1 = DB_MAN.getConnection().prepareStatement(query1);
+            
+            ps1.setString(1, id);
+            
+            rs = ps1.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null,"이미 존재하는 아이디입니다.");
+                return;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(signUpForm.class.getName()).log(Level.SEVERE,null, ex);
+        }
+        
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+        String formatedNow = formatter.format(now);
+        
+        PreparedStatement ps;
+        String query = "insert into `netbeansUser`(`u_id`,`u_pass`,`u_date`) values (?,?,?)";
+        
+        try {
+            ps = DB_MAN.getConnection().prepareStatement(query);
+            
+            ps.setString(1, id);
+            ps.setString(2, password);
+            ps.setString(3, formatedNow);
+            
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null,"회원가입 성공");
+                
+                loginForm logForm = new loginForm();
+                logForm.setVisible(true);
+                logForm.pack();
+                logForm.setLocationRelativeTo(null);
+                logForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(signUpForm.class.getName()).log(Level.SEVERE,null, ex);
+        }
+    }//GEN-LAST:event_jButton_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,12 +351,9 @@ public class signUpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButton_Register;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelMin;
@@ -285,5 +362,8 @@ public class signUpForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel password1;
+    private javax.swing.JLabel password2;
+    private javax.swing.JLabel userId;
     // End of variables declaration//GEN-END:variables
 }
