@@ -15,7 +15,8 @@
 &emsp;&emsp; SQL> create table netbeansUser (<br>
 &emsp;&emsp;&emsp;&emsp;&emsp; u_no int(11) auto_increment primary key,<br>
 &emsp;&emsp;&emsp;&emsp;&emsp; u_id varchar(20) not null,<br>
-&emsp;&emsp;&emsp;&emsp;&emsp; u_pass varchar(20) not null,<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; u_salt varchar(200) not null,<br>
+&emsp;&emsp;&emsp;&emsp;&emsp; u_pass varchar(200) not null,<br>
 &emsp;&emsp;&emsp;&emsp;&emsp; u_date DATETIME not null<br>
 &emsp;&emsp;&emsp;&emsp;&emsp; );
 </h3>
