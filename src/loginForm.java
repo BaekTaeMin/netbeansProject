@@ -277,7 +277,6 @@ public class loginForm extends javax.swing.JFrame {
                 if (rs1.next()) {
                     // salt 받아오기
                     String salt = rs1.getString(1);
-                    System.out.println(salt);
                     
                     // 입력한 비밀번호와 조합
                     String passwordAndSalt = password + salt;
