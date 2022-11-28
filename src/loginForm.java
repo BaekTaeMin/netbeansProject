@@ -1,7 +1,12 @@
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -241,34 +246,79 @@ public class loginForm extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         String id = jTextFieldUserid.getText();
         String password = jPasswordField.getText();
+        
         PreparedStatement ps;
         ResultSet rs;
         
-        String query1 = "SELECT * From `netbeansUser` WHERE `u_id` = ? and `u_pass` = ?";
+        PreparedStatement ps1;
+        ResultSet rs1;
+        
+        PreparedStatement ps2;
+        ResultSet rs2;
+        
+        String query1 = "SELECT u_id From `netbeansUser` WHERE `u_id` = ?";
+        String query2 = "SELECT u_salt From `netbeansUser` WHERE `u_id` = ?";
+        String query3 = "SELECT u_pass From `netbeansUser` WHERE `u_id` = ?";
         
         
         try {
             ps = DB_MAN.getConnection().prepareStatement(query1);
             
             ps.setString(1, id);
-            ps.setString(2, password);
             
             rs = ps.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null,rs.getString(2)+"님 반갑습니다.");
-                mainForm form = new mainForm();
-                form.setVisible(true);
-                form.pack();
-                form.setLocationRelativeTo(null);
-                form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                ps1 = DB_MAN.getConnection().prepareStatement(query2);
+            
+                ps1.setString(1, id);
+                
+                rs1 = ps1.executeQuery();
                 userName = id;
-                form.IDlbl.setText(userName);
-                this.dispose();
+                if (rs1.next()) {
+                    // salt 받아오기
+                    String salt = rs1.getString(1);
+                    System.out.println(salt);
+                    
+                    // 입력한 비밀번호와 조합
+                    String passwordAndSalt = password + salt;
+            
+                    MessageDigest md = MessageDigest.getInstance("SHA-256");
+                    String hex = "";
+                    
+                    //평문+salt 암호화
+                    md.update(passwordAndSalt.getBytes());
+                    hex = String.format("%064x", new BigInteger(1, md.digest()));
+                    
+                    ps2 = DB_MAN.getConnection().prepareStatement(query3);
+            
+                    ps2.setString(1, id);
+            
+                    rs2 = ps2.executeQuery();
+                    
+                    if (rs2.next()) {
+                        String upass = rs2.getString(1);
+                        if (upass.equals(hex)) {
+                            JOptionPane.showMessageDialog(null,userName+"님 반갑습니다.");
+                            mainForm form = new mainForm();
+                            form.setVisible(true);
+                            form.pack();
+                            form.setLocationRelativeTo(null);
+                            form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            form.IDlbl.setText(userName);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null,"비밀번호를 다시 입력해주세요.");
+                        }
+                    }
+                }
+               
             }else {
                 JOptionPane.showMessageDialog(null,"아이디나 비밀번호를 확인해주세요.");
             }
         } catch (SQLException ex) {
             Logger.getLogger(signUpForm.class.getName()).log(Level.SEVERE,null, ex);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
