@@ -52,7 +52,11 @@ public class mainForm extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("맑은 고딕", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(250, 250, 250));
         jLabel2.setText("ID :");
+
+        IDlbl.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        IDlbl.setForeground(new java.awt.Color(250, 250, 250));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -84,6 +88,8 @@ public class mainForm extends javax.swing.JFrame {
                 .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(107, 107, 107))
         );
+
+        IDlbl.setText("IDlbl");
 
         jPanel1.setBackground(new java.awt.Color(235, 149, 50));
 
@@ -208,7 +214,7 @@ public class mainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDlbl;
+    public javax.swing.JLabel IDlbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
