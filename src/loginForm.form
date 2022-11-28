@@ -150,7 +150,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jButtonCancel" min="-2" pref="86" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="86" max="-2" attributes="0"/>
+                          <Component id="jButtonLogin" min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPasswordField" min="-2" pref="200" max="-2" attributes="0"/>
                       <Component id="jTextFieldUserid" min="-2" pref="200" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCancel" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jButtonLogin" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelSignUp" min="-2" max="-2" attributes="0"/>
@@ -232,7 +232,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonLogin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="a7" red="22" type="rgb"/>
@@ -245,6 +245,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xb85c;&#xadf8;&#xc778;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLoginActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCancel">
           <Properties>

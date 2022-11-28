@@ -1,5 +1,11 @@
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -38,7 +44,7 @@ public class loginForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldUserid = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jButtonLogin = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jLabelSignUp = new javax.swing.JLabel();
 
@@ -111,10 +117,15 @@ public class loginForm extends javax.swing.JFrame {
         jPasswordField.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(34, 167, 240));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("로그인");
+        jButtonLogin.setBackground(new java.awt.Color(34, 167, 240));
+        jButtonLogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLogin.setText("로그인");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginActionPerformed(evt);
+            }
+        });
 
         jButtonCancel.setBackground(new java.awt.Color(242, 38, 19));
         jButtonCancel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -151,7 +162,7 @@ public class loginForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldUserid, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -174,7 +185,7 @@ public class loginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelSignUp)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -225,6 +236,37 @@ public class loginForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabelSignUpMouseClicked
 
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        String id = jTextFieldUserid.getText();
+        String password = jPasswordField.getText();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        String query1 = "SELECT * From `netbeansUser` WHERE `u_id` = ? and `u_pass` = ?";
+        
+        try {
+            ps = DB_MAN.getConnection().prepareStatement(query1);
+            
+            ps.setString(1, id);
+            ps.setString(2, password);
+            
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null,rs.getString(2)+"님 반갑습니다.");
+                mainForm form = new mainForm();
+                form.setVisible(true);
+                form.pack();
+                form.setLocationRelativeTo(null);
+                form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                this.dispose();
+            }else {
+                JOptionPane.showMessageDialog(null,"아이디나 비밀번호를 확인해주세요.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(signUpForm.class.getName()).log(Level.SEVERE,null, ex);
+        }
+    }//GEN-LAST:event_jButtonLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,8 +303,8 @@ public class loginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
