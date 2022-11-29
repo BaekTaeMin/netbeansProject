@@ -1,8 +1,6 @@
-import com.mysql.cj.PreparedQuery;
+
 import javax.swing.JFrame;
-import javax.swing.JTable;
 import java.sql.*;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,13 +12,13 @@ import javax.swing.JOptionPane;
  * @author ksmug
  */
 public class stockViewForm extends javax.swing.JFrame {
-    
     /**
      * Creates new form stockViewForm
      */
     public stockViewForm() {
         initComponents();        
         String pname = stockManageForm.productName;
+        this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치 
         
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -409,12 +407,20 @@ public class stockViewForm extends javax.swing.JFrame {
                 return;
             }
         }
-        stockManageForm sManageF = new stockManageForm();
-        sManageF.setVisible(true);
-        sManageF.pack();
-        sManageF.setLocationRelativeTo(null);
-        sManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        stockViewForm stockView = new stockViewForm();
+        stockView.setVisible(true);
         this.dispose();
+        stockView.brandLbl1.setText(stockManageForm.brand);
+        stockView.productNameLbl.setText(stockManageForm.productName);
+        
+        
+        
+//        stockManageForm sManageF = new stockManageForm();
+//        sManageF.setVisible(true);
+//        sManageF.pack();
+//        sManageF.setLocationRelativeTo(null);
+//        sManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.dispose();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
