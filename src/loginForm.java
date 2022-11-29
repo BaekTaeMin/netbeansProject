@@ -28,7 +28,7 @@ public class loginForm extends javax.swing.JFrame {
      */
     public loginForm() {
         initComponents();
-        this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치
+        this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치 
     }
 
     /**
@@ -297,13 +297,11 @@ public class loginForm extends javax.swing.JFrame {
                     if (rs2.next()) {
                         String upass = rs2.getString(1);
                         if (upass.equals(hex)) {
-                            JOptionPane.showMessageDialog(null,userName+"님 반갑습니다.");
-                            mainForm form = new mainForm();
-                            form.setVisible(true);
-                            form.pack();
-                            form.setLocationRelativeTo(null);
-                            form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            form.IDlbl.setText(userName);
+                            captcha cap = new captcha();
+                            cap.setVisible(true);
+                            cap.pack();
+                            cap.setLocationRelativeTo(null);
+                            cap.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             this.dispose();
                         } else {
                             JOptionPane.showMessageDialog(null,"비밀번호를 다시 입력해주세요.");
