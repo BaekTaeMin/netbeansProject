@@ -30,13 +30,13 @@ public class stockManageForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         brandTF = new javax.swing.JTextField();
-        pNameTF = new javax.swing.JPasswordField();
         stockViewBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabelClose1 = new javax.swing.JLabel();
         jLabelMin1 = new javax.swing.JLabel();
+        pNameTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +52,6 @@ public class stockManageForm extends javax.swing.JFrame {
 
         brandTF.setBackground(new java.awt.Color(108, 122, 137));
         brandTF.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        pNameTF.setBackground(new java.awt.Color(108, 122, 137));
-        pNameTF.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         stockViewBtn.setBackground(new java.awt.Color(34, 167, 240));
         stockViewBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -114,7 +111,7 @@ public class stockManageForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(jLabelMin1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelClose1)
@@ -128,13 +125,16 @@ public class stockManageForm extends javax.swing.JFrame {
                 .addComponent(jLabelMin1))
         );
 
+        pNameTF.setBackground(new java.awt.Color(108, 122, 137));
+        pNameTF.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -143,13 +143,13 @@ public class stockManageForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(backBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(24, 24, 24)
                                 .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,27 +167,28 @@ public class stockManageForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 298, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+       
+    
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         mainForm mainF = new mainForm();
         mainF.setVisible(true);
@@ -207,7 +208,11 @@ public class stockManageForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMin1MouseClicked
 
     private void stockViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockViewBtnActionPerformed
+        String brand = brandTF.getText();
+        String pname = pNameTF.getText();
         stockViewForm sViewF = new stockViewForm();
+        sViewF.setBrand(brand);
+        sViewF.setPname(pname);
         sViewF.setVisible(true);
         sViewF.pack();
         sViewF.setLocationRelativeTo(null);
@@ -260,7 +265,7 @@ public class stockManageForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMin1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField pNameTF;
+    private javax.swing.JTextField pNameTF;
     private javax.swing.JButton stockViewBtn;
     // End of variables declaration//GEN-END:variables
 }
