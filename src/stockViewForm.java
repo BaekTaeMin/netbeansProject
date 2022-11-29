@@ -39,14 +39,16 @@ public class stockViewForm extends javax.swing.JFrame {
                     int pno = rs.getInt(1);
                     String psize = rs.getString(2);
                     String pqty = rs.getString(3);
-                    sizeStr += psize + System.getProperty("line separator");
-                    qtyStr += pqty + "\\n";
+                    sizeStr += psize;
+                    sizeStr += "-";
+                    qtyStr += pqty;
+                    qtyStr += "-";
                     
                     System.out.println(sizeStr);
                 }
                 
-                sizeLbl.setText(sizeStr);
-                qtyLbl.setText(qtyStr);
+                sizeLbl.setText("<html>" + sizeStr.replace("-", "<br>") + "</html>");
+                qtyLbl.setText("<html>" + qtyStr.replace("-", "<br>") + "</html>");
             }else{
                 System.out.println("false");
             }
@@ -234,9 +236,9 @@ public class stockViewForm extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(productNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
