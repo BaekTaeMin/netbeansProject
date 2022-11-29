@@ -66,6 +66,7 @@ public class stockInsertForm extends javax.swing.JFrame {
         submitBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setText("확인");
+        submitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
@@ -76,6 +77,7 @@ public class stockInsertForm extends javax.swing.JFrame {
         backBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setText("돌아가기");
+        backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -140,6 +142,7 @@ public class stockInsertForm extends javax.swing.JFrame {
         resetBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         resetBtn.setForeground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("초기화");
+        resetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetBtnActionPerformed(evt);
@@ -383,6 +386,7 @@ public class stockInsertForm extends javax.swing.JFrame {
         mainF.pack();
         mainF.setLocationRelativeTo(null);
         mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainF.IDlbl.setText(loginForm.userName);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
