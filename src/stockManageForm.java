@@ -18,6 +18,7 @@ public class stockManageForm extends javax.swing.JFrame {
      */
     public stockManageForm() {
         initComponents();
+        this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치 
     }
 
     /**
