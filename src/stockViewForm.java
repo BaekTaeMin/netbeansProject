@@ -19,7 +19,6 @@ public class stockViewForm extends javax.swing.JFrame {
     public stockViewForm() {
         initComponents();        
         String pname = stockManageForm.productName;
-        System.out.println(pname);
         
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -44,15 +43,11 @@ public class stockViewForm extends javax.swing.JFrame {
                     qtyStr += pqty;
                     qtyStr += "-";
                     
-                    System.out.println(sizeStr);
                 }
                 
                 sizeLbl.setText("<html>" + sizeStr.replace("-", "<br>") + "</html>");
                 qtyLbl.setText("<html>" + qtyStr.replace("-", "<br>") + "</html>");
-            }else{
-                System.out.println("false");
             }
-            
         }catch (SQLException e){
             e.printStackTrace();
         }
