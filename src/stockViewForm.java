@@ -1,7 +1,9 @@
+import com.mysql.cj.PreparedQuery;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,6 +20,8 @@ public class stockViewForm extends javax.swing.JFrame {
      */
     public stockViewForm() {
         initComponents();        
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
         String pname = stockManageForm.productName;
         
         PreparedStatement ps = null;
@@ -80,6 +84,11 @@ public class stockViewForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         qtyLbl = new javax.swing.JLabel();
         sizeLbl = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        deleteQtyTF = new javax.swing.JTextField();
+        deleteSizeTF = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,44 +190,83 @@ public class stockViewForm extends javax.swing.JFrame {
         sizeLbl.setText("000");
         sizeLbl.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        deleteBtn.setBackground(new java.awt.Color(34, 167, 240));
+        deleteBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("삭제");
+        deleteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        deleteQtyTF.setBackground(new java.awt.Color(236, 240, 241));
+        deleteQtyTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        deleteQtyTF.setForeground(new java.awt.Color(34, 49, 63));
+
+        deleteSizeTF.setBackground(new java.awt.Color(236, 240, 241));
+        deleteSizeTF.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        deleteSizeTF.setForeground(new java.awt.Color(34, 49, 63));
+
+        jLabel6.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("삭제할 사이즈");
+
+        jLabel7.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("삭제할 수량");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(brandLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(productNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(brandLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(206, 206, 206)
-                                .addComponent(sizeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(sizeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(qtyLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(productNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addComponent(jLabel5)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(backBtn)
-                        .addGap(17, 17, 17))))
+                                .addComponent(jLabel5)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(qtyLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(backBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteSizeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteQtyTF, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,30 +282,34 @@ public class stockViewForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(qtyLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sizeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(50, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sizeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(qtyLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteQtyTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteSizeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 763, Short.MAX_VALUE)
+            .addGap(0, 679, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -281,6 +333,91 @@ public class stockViewForm extends javax.swing.JFrame {
         sManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        if(deleteSizeTF.getText().equals("삭제할 사이즈") || deleteSizeTF.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "삭제할 사이즈를 입력하세요.");
+            return;
+        }
+        if(deleteQtyTF.getText().equals("삭제할 사이즈") || deleteQtyTF.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "삭제할 수량을 입력하세요.");
+            return;
+        }
+        
+        String pname = productNameLbl.getText();
+        int size = Integer.parseInt(deleteSizeTF.getText());
+        int qty = Integer.parseInt(deleteQtyTF.getText());
+        int oriQty = 0;
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            String sql = "select p_qty from stock where p_no = (select p_no from product where p_name = ?) and p_size = ?";
+            ps = DB_MAN.getConnection().prepareStatement(sql);
+            ps.setString(1, pname);
+            ps.setInt(2, size);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                oriQty = rs.getInt(1);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        if(qty < oriQty && qty > 0){
+            try{
+                String sql1 = "update stock set p_qty = p_qty - ? where p_no = (select p_no from product where p_name = ?) and p_size = ?";
+            
+                ps = DB_MAN.getConnection().prepareStatement(sql1);
+                ps.setInt(1, qty);
+                ps.setString(2, pname);
+                ps.setInt(3, size);
+            
+                int res = ps.executeUpdate();
+                if(res != 0){
+                    JOptionPane.showMessageDialog(null, "정상적으로 처리했습니다.");
+                }else{
+                    JOptionPane.showMessageDialog(null, "XXX");
+                }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }else if(qty == oriQty){
+            try{
+                
+                String sql2 = "delete from stock where p_no = (select p_no from product where p_name = ?) and p_size = ?";
+                ps = DB_MAN.getConnection().prepareStatement(sql2);
+                ps.setString(1, pname);
+                ps.setInt(2, size);
+
+                int res = ps.executeUpdate();
+                if(res != 0){
+                    JOptionPane.showMessageDialog(null, "정상적으로 삭제 되었습니다.");
+                }else{
+                    JOptionPane.showMessageDialog(null, "재고가 없는 상품입니다.");
+                    return;
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            if(oriQty == 0){
+                JOptionPane.showMessageDialog(null, "재고가 없는 상품입니다.");
+                return;
+            }else{
+                if(qty < 0 || qty == 0){JOptionPane.showMessageDialog(null, "0 또는 음의 값이 입력되었습니다."); return;}
+                JOptionPane.showMessageDialog(null, "재고수량보다 큰 값이 입력되었습니다.");
+                return;
+            }
+        }
+        stockManageForm sManageF = new stockManageForm();
+        sManageF.setVisible(true);
+        sManageF.pack();
+        sManageF.setLocationRelativeTo(null);
+        sManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,11 +457,16 @@ public class stockViewForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     public javax.swing.JLabel brandLbl1;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JTextField deleteQtyTF;
+    private javax.swing.JTextField deleteSizeTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelClose1;
     private javax.swing.JLabel jLabelMin1;
     private javax.swing.JPanel jPanel2;
