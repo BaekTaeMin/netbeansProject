@@ -20,8 +20,6 @@ public class stockViewForm extends javax.swing.JFrame {
      */
     public stockViewForm() {
         initComponents();        
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
         String pname = stockManageForm.productName;
         
         PreparedStatement ps = null;
