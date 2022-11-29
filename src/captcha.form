@@ -144,7 +144,7 @@
                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                           <Component id="jButtonSubmit" min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="captchaField" min="-2" pref="271" max="-2" attributes="0"/>
+                      <Component id="captchaField" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabelLogin" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -161,9 +161,9 @@
                   <Component id="captchaString" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="captchaLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="captchaField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCancel" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jButtonSubmit" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
