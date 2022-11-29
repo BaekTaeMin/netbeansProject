@@ -10,7 +10,21 @@ import javax.swing.JFrame;
  * @author ksmug
  */
 public class stockViewForm extends javax.swing.JFrame {
-
+    private static String brand;
+    private static String pname;
+    
+    public String getBrand(){
+        return this.brand;
+    }
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+    public String getPname(){
+        return this.pname;
+    }
+    public void setPname(String pname){
+        this.pname = pname;
+    }
     /**
      * Creates new form stockViewForm
      */
