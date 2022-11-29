@@ -294,7 +294,7 @@ public class signUpForm extends javax.swing.JFrame {
         }
         
         Date now = new Date(System.currentTimeMillis());
-        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
         String formatedNow = formatter.format(now);
         
         
