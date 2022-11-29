@@ -1,4 +1,6 @@
 import javax.swing.JFrame;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,7 +11,8 @@ import javax.swing.JFrame;
  * @author ksmug
  */
 public class stockManageForm extends javax.swing.JFrame {
-
+    static String brand = null;
+    static String productName = null;
     /**
      * Creates new form stockManageForm
      */
@@ -208,16 +211,44 @@ public class stockManageForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMin1MouseClicked
 
     private void stockViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockViewBtnActionPerformed
-        String brand = brandTF.getText();
-        String pname = pNameTF.getText();
-        stockViewForm sViewF = new stockViewForm();
-        sViewF.setBrand(brand);
-        sViewF.setPname(pname);
-        sViewF.setVisible(true);
-        sViewF.pack();
-        sViewF.setLocationRelativeTo(null);
-        sViewF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+        brand = brandTF.getText();
+        productName = pNameTF.getText();
+        
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            String sql1 = "select p_name from product where p_name = ? and p_brand = ?";
+        
+            ps = DB_MAN.getConnection().prepareStatement(sql1);
+            ps.setString(1, productName);
+            ps.setString(2, brand);
+            rs = ps.executeQuery();
+        
+            String selectName = "";
+            while(rs.next()){
+                selectName = rs.getString(1);
+            }
+            
+            if(!selectName.equals("")){
+                stockViewForm sViewF = new stockViewForm();
+                sViewF.setVisible(true);
+                sViewF.pack();
+                sViewF.setLocationRelativeTo(null);
+                sViewF.brandLbl1.setText(brand);
+                sViewF.productNameLbl.setText(productName);
+                sViewF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "등록되지 않은 상품입니다.");
+                return;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        
     }//GEN-LAST:event_stockViewBtnActionPerformed
 
     /**
