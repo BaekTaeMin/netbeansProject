@@ -143,11 +143,6 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabelLogin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -157,13 +152,23 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="captchaField" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="captchaLabel" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="captchaField" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabelLogin" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="captchaLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -197,7 +202,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f1" green="f0" red="ec" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xc544;&#xb798;&#xc640; &#xac19;&#xc774; &#xc785;&#xb825;&#xd574;&#xc8fc;&#xc138;&#xc694;."/>
+            <Property name="text" type="java.lang.String" value="&#xc704;&#xc640; &#xac19;&#xc774; &#xc785;&#xb825;&#xd574;&#xc8fc;&#xc138;&#xc694;."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="captchaString">
