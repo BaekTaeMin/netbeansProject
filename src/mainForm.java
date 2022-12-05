@@ -34,6 +34,7 @@ public class mainForm extends javax.swing.JFrame {
         IDlbl = new javax.swing.JLabel();
         stockInsertBtn = new javax.swing.JButton();
         jButtonLogout = new javax.swing.JButton();
+        stockSalebtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelClose = new javax.swing.JLabel();
@@ -83,6 +84,16 @@ public class mainForm extends javax.swing.JFrame {
             }
         });
 
+        stockSalebtn.setBackground(new java.awt.Color(34, 167, 240));
+        stockSalebtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        stockSalebtn.setForeground(new java.awt.Color(255, 255, 255));
+        stockSalebtn.setText("판매처리");
+        stockSalebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockSalebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -91,17 +102,17 @@ public class mainForm extends javax.swing.JFrame {
                 .addContainerGap(106, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(stockInsertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(54, 54, 54)
-                                    .addComponent(jLabel3))
-                                .addComponent(stockViewBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(IDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(stockInsertBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel3))
+                            .addComponent(stockViewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(IDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(stockSalebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,10 +130,12 @@ public class mainForm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(IDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(stockInsertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(stockInsertBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(stockSalebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         IDlbl.setText("IDlbl");
@@ -233,6 +246,15 @@ public class mainForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
+    private void stockSalebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockSalebtnActionPerformed
+        stockSaleManageForm saleSMForm = new stockSaleManageForm();
+        saleSMForm.setVisible(true);
+        saleSMForm.pack();
+        saleSMForm.setLocationRelativeTo(null);
+        saleSMForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_stockSalebtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,6 +301,7 @@ public class mainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton stockInsertBtn;
+    private javax.swing.JButton stockSalebtn;
     private javax.swing.JButton stockViewBtn;
     // End of variables declaration//GEN-END:variables
 }
