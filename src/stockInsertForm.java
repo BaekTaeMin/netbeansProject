@@ -238,6 +238,7 @@ public class stockInsertForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     int pNo = 0;
+    int count = 0;
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         if(iBrandTF.getText().equals("")){JOptionPane.showMessageDialog(null, "브랜드를 입력해주세요."); return;}
         if(iPnameTF.getText().equals("")){JOptionPane.showMessageDialog(null, "상품명을 입력해주세요."); return;}
@@ -303,12 +304,13 @@ public class stockInsertForm extends javax.swing.JFrame {
             
                 int res = ps.executeUpdate();
                 if(res != 0 && pNo != 0){
-                        String sql4 = "insert into stock values(?, ?, ?)";
+                        String sql4 = "insert into stock values(?, ?, ?, ?)"; //여기 물음표 추가
                         
                         ps = con.prepareStatement(sql4);
                         ps.setInt(1, pNo);
                         ps.setInt(2, psize);
                         ps.setInt(3, pqty);
+                        ps.setInt(4, count);
                         
                         res = ps.executeUpdate();
                         
@@ -347,12 +349,13 @@ public class stockInsertForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "상품이 정상적으로 등록되었습니다.");
                 }else{
                     if(parentNo != 0){
-                        String sql7 = "insert stock values(?, ?, ?)";
+                        String sql7 = "insert stock values(?, ?, ?, ?)";
                     
                         ps = con.prepareStatement(sql7);
                         ps.setInt(1, parentNo);
                         ps.setInt(2, psize);
                         ps.setInt(3, pqty);
+                        ps.setInt(4, count);
                     
                         res = ps.executeUpdate();
                         if(res != 0){
