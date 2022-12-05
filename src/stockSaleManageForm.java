@@ -8,15 +8,17 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ksmug
+ * @author Baek
  */
-public class stockManageForm extends javax.swing.JFrame {
+public class stockSaleManageForm extends javax.swing.JFrame {
     static String brand = null;
     static String productName = null;
+    static String size = null;
+    static String quantity = null;
     /**
-     * Creates new form stockManageForm
+     * Creates new form stockSaleManageForm
      */
-    public stockManageForm() {
+    public stockSaleManageForm() {
         initComponents();
         this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치 
     }
@@ -84,7 +86,7 @@ public class stockManageForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("재고관리");
+        jLabel2.setText("판매관리");
 
         jLabelClose1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelClose1.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,12 +149,13 @@ public class stockManageForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(backBtn)
-                                .addGap(24, 24, 24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(stockViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(pNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addGap(1, 1, 1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -215,7 +218,6 @@ public class stockManageForm extends javax.swing.JFrame {
         brand = brandTF.getText();
         productName = pNameTF.getText();
         
-        
         PreparedStatement ps = null;
         ResultSet rs = null;
         
@@ -233,13 +235,13 @@ public class stockManageForm extends javax.swing.JFrame {
             }
             
             if(!selectName.equals("")){
-                stockViewForm sViewF = new stockViewForm();
-                sViewF.setVisible(true);
-                sViewF.pack();
-                sViewF.setLocationRelativeTo(null);
-                sViewF.brandLbl1.setText(brand);
-                sViewF.productNameLbl.setText(productName);
-                sViewF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                stockSaleForm sSaleF = new stockSaleForm();
+                sSaleF.setVisible(true);
+                sSaleF.pack();
+                sSaleF.setLocationRelativeTo(null);
+                sSaleF.brandLbl1.setText(brand);
+                sSaleF.productNameLbl.setText(productName);
+                sSaleF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "등록되지 않은 상품입니다.");
@@ -248,8 +250,6 @@ public class stockManageForm extends javax.swing.JFrame {
         }catch(SQLException e){
             e.printStackTrace();
         }
-        
-        
     }//GEN-LAST:event_stockViewBtnActionPerformed
 
     /**
