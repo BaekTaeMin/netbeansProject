@@ -341,11 +341,11 @@ public class stockSaleForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelClose1MouseClicked
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        stockManageForm sManageF = new stockManageForm();
-        sManageF.setVisible(true);
-        sManageF.pack();
-        sManageF.setLocationRelativeTo(null);
-        sManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        stockSaleManageForm sSaleManageF = new stockSaleManageForm();
+        sSaleManageF.setVisible(true);
+        sSaleManageF.pack();
+        sSaleManageF.setLocationRelativeTo(null);
+        sSaleManageF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
