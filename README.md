@@ -52,6 +52,7 @@ Library -> Add JAR/Folder -> mysql-connector-java-8.0.13.jar파일추가 <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; p_no int(10) not null, <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; p_size int(10) not null, <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; p_qty int, <br>
+&emsp;&emsp;&emsp;&emsp;&emsp; count int, <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; primary key(p_no, p_size), <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; foreign key(p_no) <br>
 &emsp;&emsp;&emsp;&emsp;&emsp; references product(p_no) on update cascade <br>
