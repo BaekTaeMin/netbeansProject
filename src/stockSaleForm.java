@@ -17,7 +17,7 @@ public class stockSaleForm extends javax.swing.JFrame {
      */
     public stockSaleForm() {
         initComponents();        
-        String pname = stockManageForm.productName;
+        String pname = stockSaleManageForm.productName;
         this.setLocationRelativeTo(null);   // 폼을 화면 센터에 위치 
         
         PreparedStatement ps = null;
@@ -432,8 +432,8 @@ public class stockSaleForm extends javax.swing.JFrame {
         stockSaleForm stockSale = new stockSaleForm();
         stockSale.setVisible(true);
         this.dispose();
-        stockSale.brandLbl1.setText(stockManageForm.brand);
-        stockSale.productNameLbl.setText(stockManageForm.productName);
+        stockSale.brandLbl1.setText(stockSaleManageForm.brand);
+        stockSale.productNameLbl.setText(stockSaleManageForm.productName);
 
     }//GEN-LAST:event_saleBtnActionPerformed
 
